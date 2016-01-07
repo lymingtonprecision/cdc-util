@@ -9,7 +9,7 @@ The current published version of the this library is:
 
 Refer to [the documentation][docs] for details of what it provides.
 
-[docs]: https://lymingtonprecision.github.io/change-data-capture/cdc-util/
+[docs]: https://lymingtonprecision.github.io/cdc-util/
 
 ## License
 
