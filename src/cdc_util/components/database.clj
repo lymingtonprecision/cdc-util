@@ -19,7 +19,9 @@
     :maximum-pool-size 20
     :adapter "oracle"
     :driver-type "thin"
-    :port-number 1521}))
+    :port-number 1521
+    :implicit-caching-enabled true
+    :max-statements 200}))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Component
