@@ -1,4 +1,4 @@
-(defproject lymingtonprecision/cdc-util "1.3.0-SNAPSHOT"
+(defproject lymingtonprecision/cdc-util "1.2.1"
   :description "LPE Change Data Capture utility library"
   :url "https://github.com/lymingtonprecision/cdc-util"
   :license {:name "Eclipse Public License"
