@@ -33,7 +33,7 @@
   {:table oracle-refs/db-schema-ref
    (schema/optional-key :table-alias) oracle-refs/table-alias
    :queue oracle-refs/queue-ref
-   :queue-table oracle-refs/queue-ref
+   :queue-table oracle-refs/queue-table-ref
    :status (apply schema/enum ccd-states)
    :timestamp org.joda.time.DateTime})
 

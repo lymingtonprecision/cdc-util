@@ -109,6 +109,36 @@
   (is (nil? (schema/check queue-ref "a.a"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; queue-table-ref
+
+(def gen-queue-table-ref
+  (gen/fmap
+   #(string/join "." %)
+   (gen/tuple
+    (gen-ref)
+    (gen/one-of [(gen-quoted-ref 21) (gen-unquoted-ref 21)]))))
+
+(defspec queue-table-refs
+  (chuck/for-all
+    [v gen-queue-table-ref]
+    (is (nil? (schema/check queue-table-ref v)))))
+
+(defspec invalid-queue-table-refs
+  (chuck/for-all
+    [v gen-invalid-schema-ref]
+    (is (schema/check queue-table-ref v))))
+
+(deftest queue-table-refs-must-be-21-chars-or-less
+  (is (schema/check queue-table-ref (str "a.\"" (string/join (repeat 22 "a")) \")))
+  (is (nil? (schema/check queue-table-ref (str "a.\"" (string/join (repeat 21 "a")) \"))))
+  (is (schema/check queue-table-ref (str "a." (string/join (repeat 22 "a")))))
+  (is (nil? (schema/check queue-table-ref (str "a." (string/join (repeat 21 "a")))))))
+
+(deftest queue-table-refs-must-have-schemas
+  (is (schema/check queue-table-ref "a"))
+  (is (nil? (schema/check queue-table-ref "a.a"))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; table-alias
 
 (def gen-table-alias

@@ -24,6 +24,9 @@
 (def queue-ref-regex
   (re-pattern (str "(?i)" (schema-obj-regex-str) "\\." (schema-obj-regex-str 24))))
 
+(def queue-table-ref-regex
+  (re-pattern (str "(?i)" (schema-obj-regex-str) "\\." (schema-obj-regex-str 21))))
+
 (def table-alias-regex
   (re-pattern (str "(?i)" (schema-obj-regex-str 22))))
 
@@ -37,6 +40,10 @@
 (defschema queue-ref
   (schema/pred #(re-matches queue-ref-regex %)
                "Queue reference (schema.queue, queue <=24 chars)"))
+
+(defschema queue-table-ref
+  (schema/pred #(re-matches queue-table-ref-regex %)
+               "Queue table reference (schema.queue, queue table <=21 chars)"))
 
 (defschema table-alias
   (schema/pred #(re-matches table-alias-regex %)

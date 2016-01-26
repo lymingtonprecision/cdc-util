@@ -40,7 +40,7 @@
    :status gen-rand-ccd-status
    :timestamp gen-rand-time
    :queue oracle-refs/gen-queue-ref
-   :queue-table oracle-refs/gen-queue-ref))
+   :queue-table oracle-refs/gen-queue-table-ref))
 
 (defn new-change-capture-def []
   (first (gen/sample gen-change-capture-def 1)))
