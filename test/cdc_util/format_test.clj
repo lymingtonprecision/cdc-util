@@ -8,6 +8,7 @@
             [cheshire.core :as cheshire]
             [clj-kafka.consumer.zk :as kafka.consumer]
             [clj-time.format :as time.format]
+            [schema.core :as schema]
 
             [cdc-util.test-generators :refer :all]
             [cdc-util.format :refer :all])
@@ -40,7 +41,7 @@
             true)))))
 
 (deftest encodes-validation-errors-as-strings
-  (let [err (schema/check s/Str 1)]
+  (let [err (schema/check schema/Str 1)]
     (is (= (pr-str err)
            (cheshire/parse-string
             (cheshire/generate-string err)
