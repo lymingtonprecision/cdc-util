@@ -31,6 +31,14 @@
 (def default-control-topic
   "change-data-capture")
 
+(defn bootstrap-servers
+  "Returns the Kafka bootstrap server string for the brokers connected to the
+  specified ZooKeeper quorum."
+  [zk-connect]
+  (-> {"zookeeper.connect" zk-connect}
+      kafka.zk/brokers
+      kafka.zk/broker-list))
+
 (defn topic-exists?
   "Returns truthy if the specified topic exists within the given Kafka
   configuration."
